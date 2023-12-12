@@ -22,10 +22,10 @@ const EventosAlunoPage = () => {
   const [eventos, setEventos] = useState([]);
   // select mocado
   // const [quaisEventos, setQuaisEventos] = useState([
-  const quaisEventos = [
-    { value: 1, text: "Todos os eventos" },
-    { value: 2, text: "Meus eventos" },
-  ];
+  const [quaisEventos, setQuaisEventos] = useState([
+    { value: "1", text: "Todos os eventos" },
+    { value: "2", text: "Meus eventos" },
+  ]);
 
   const [tipoEvento, setTipoEvento] = useState("1"); //código do tipo do Evento escolhido
   const [showSpinner, setShowSpinner] = useState(false);
@@ -36,10 +36,6 @@ const EventosAlunoPage = () => {
   const [comentario, setComentario] = useState("");
   const [idEvento, setIdEvento] = useState("");
   const [idComentario, setIdComentario] = useState(null);
-
-  useEffect(() => {
-    loadEventsType();
-  }, [tipoEvento, userData.userId]); //
 
   async function loadEventsType() {
     setShowSpinner(true);
@@ -109,6 +105,12 @@ const EventosAlunoPage = () => {
     }
     setShowSpinner(false);
   }
+
+  useEffect(() => {
+    loadEventsType();
+  }, [tipoEvento, userData.userId]); //
+
+
   const verificaPresenca = (arrAllEvents, eventsUser) => {
     for (let x = 0; x < arrAllEvents.length; x++) {
       //para cada evento principal
