@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"; //v6
 
 // imports dos componentes de página
 import HomePage from "../pages/HomePage/HomePage";
+import DetalhesEvento from "../pages/DetalhesEvento/DetalhesEvento";
 import TipoEventos from "../pages/TipoEventosPage/TipoEventosPage";
 import EventosPage from "../pages/EventosPage/EventosPage";
 import LoginPage from "../pages/LoginPage/LoginPage";
@@ -20,6 +21,17 @@ const Rotas = () => {
 
       <Routes>
         <Route element={<HomePage />} path="/" exact />
+        <Route element={<DetalhesEvento />} path="/detalhes-evento/:idEvento" exact />
+
+        <Route
+          path="/detalhes-evento"
+          exact
+          element={
+            <PrivateRoute redirectTo="/">
+              <DetalhesEvento />
+            </PrivateRoute>
+          }
+        />
 
         <Route
           path="/tipo-eventos"
