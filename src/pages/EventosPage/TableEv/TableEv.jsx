@@ -4,6 +4,7 @@ import "./TableEv.css";
 import editPen from "../../../assets/images/edit-pen.svg";
 import trashDelete from "../../../assets/images/trash-delete.svg";
 import { dateFormateDbToView } from "../../../Utils/stringFunctions";
+import { Link } from "react-router-dom";
 
 // importa a biblioteca de tootips ()
 import "react-tooltip/dist/react-tooltip.css";
@@ -40,6 +41,7 @@ const Table = ({ dados, fnDelete = null, fnUpdate = null }) => {
       <tbody>
         {dados.map((tp) => {
           return (
+            <Link id="events-table-row" to="/detalhes-evento" state={tp}>
             <tr className="table-data__head-row" key={tp.idEvento}>
               <td className="table-data__data table-data__data--big">
                 {tp.nomeEvento}
@@ -93,6 +95,7 @@ const Table = ({ dados, fnDelete = null, fnUpdate = null }) => {
                 />
               </td>
             </tr>
+            </Link>
           );
         })}
       </tbody>
