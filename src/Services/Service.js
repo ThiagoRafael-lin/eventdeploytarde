@@ -30,6 +30,10 @@ export const nextEventResource = '/Evento/ListarProximos';
 /**
  * Rota para o recurso Tipos de Eventos
  */
+export const oldEventResource = '/Evento/ListarAntigos';
+/**
+ * Rota para listar eventos antigos
+ */
 export const eventsTypeResource = '/TiposEvento';
 /**
  * Rota para o recurso Instituição
