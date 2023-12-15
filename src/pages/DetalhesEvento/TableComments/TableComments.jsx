@@ -1,18 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import "./TableComments.css";
-// import editPen from "../../../assets/images/edit-pen.svg";
-import editPen from "../../../assets/images/edit-pen.svg";
-import trashDelete from "../../../assets/images/trash-delete.svg";
-import { dateFormateDbToView } from "../../../Utils/stringFunctions";
 
-// importa a biblioteca de tootips ()
 import "react-tooltip/dist/react-tooltip.css";
-import { Tooltip } from "react-tooltip";
-import { Link } from "react-router-dom";
 
-// import trashDelete from "../../../assets/images/trash-delete.svg";
 
-const Table = ({ dados, userRole }) => {
+
+const Table = ({ dados }) => {
   return (
     <table className="table-data">
       {/* cabeçalho */}
@@ -29,18 +22,15 @@ const Table = ({ dados, userRole }) => {
 
       {/* corpo */}
       <tbody>
-        {dados.map((feedback) => {
+        {dados.map((tp) => {
           return (
-            <tr
-              className="table-data__head-row"
-              key={feedback.idComentarioEvento}
-            >
+            <tr className="table-data__head-row" key={tp.idComentarioEvento}>
               <td className="table-data__data table-data__data--big">
-                {feedback.usuario.nome}
+                {tp.usuario.nome}
               </td>
 
-              <td className="table-data__data table-data__data--big">
-                {feedback.descricao}
+              <td className="table-data__data table-data__data--little">
+                {tp.descricao}
               </td>
             </tr>
           );
