@@ -12,6 +12,8 @@ const DetalhesEvento = () => {
 
   const [eventoBuscado, setEventoBuscado] = useState({});
 
+  const [commentaries, setCommentaries] = useState([]);
+
   async function getEvento() {
     const promise = await api.get(`${eventsResource}/${idEvento}`);
     setEventoBuscado(promise.data);
@@ -33,6 +35,18 @@ const DetalhesEvento = () => {
         idEvent={eventoBuscado.idEvento}
       />
       </Container>
+
+      <section className="lista-eventos-section">
+          <Container>
+            <Title
+              additionalClass="comments-evento-section"
+              titleText={"Comentários"}
+              color={"white"}
+            />
+
+            <Table dados={commentaries} />
+          </Container>
+        </section>
     </MainContent>
   );
 };
