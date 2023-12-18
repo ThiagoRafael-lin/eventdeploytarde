@@ -29,22 +29,24 @@ const DetalhesEvento = () => {
   async function getEvento() {
     const promise = await api.get(`${eventsResource}/${idEvento}`);
     setEventoBuscado(promise.data);
+    console.log("Evento: " + promise.data);
+    if (userData.role === "Administrador") {
+      console.log(idEvento);
+      const promise = await api.get(`/ComentariosEvento?id=${idEvento}`);
+      setCommentaries(promise.data);
+      console.log("comentario");
+      console.log(promise.data);
+    }
+    if (userData.role === "Comum") {
+      const promise2 = await api.get(`${commentaryEventResource}?id=${idEvento}`)
+      setCommentaries(promise2.data);
+     
+      console.log(promise2.data);
+    }
   }
 
   // async function getEvento() {
-  //   if (userData.role === "Administrador") {
-  //     console.log(idEvento);
-  //     const promise = await api.get(`/ComentariosEvento?id=${idEvento}`);
-  //     setCommentaries(promise.data);
-  //     console.log("comentario");
-  //     console.log(promise.data);
-  //   }
-  //   if (userData.role === "Comum") {
-  //     const promise2 = await api.get(`${commentaryEventResource}?id=${idEvento}`)
-  //     setCommentaries(promise2.data);
-     
-  //     console.log(promise2.data);
-  //   }
+   
   // }
 
   async function allComentaries () {
@@ -55,7 +57,7 @@ const DetalhesEvento = () => {
   }
 
   // async function admComentaries () {
-  //   const promise = await api.get(comentariosAdm + "?id=" + idEvento);
+  //   const promise = await api.get(comentariosAdmListados + "?id=" + idEvento);
   //   const dados = promise.data;
 
   //   setComentariosAdmListados(dados);
